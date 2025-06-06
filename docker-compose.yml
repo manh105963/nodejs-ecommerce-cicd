@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: node_backend
+    build:
+      context: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/mydb
+    depends_on:
+      - mongo
+    command: npm start
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
