@@ -1,0 +1,491 @@
+<section class="profile-section">
+    <div class="profile-container">
+        <!-- Back Button -->
+        <div class="navigation">
+            <a href="/" class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+        
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="avatar-container">
+                <img src="{{user.profilePhoto}}" alt="Profile Picture" class="profile-avatar">
+                <div class="status-indicator"></div>
+            </div>
+            <h1 class="profile-name">{{user.Name}}</h1>
+            <p class="profile-title">Member since <span class="highlight">2023</span></p>
+        </div>
+        
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Personal Info Card -->
+            <div class="profile-card">
+                <div class="card-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <h2>Personal Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="info-row">
+                        <span class="info-label">Username</span>
+                        <span class="info-value">{{user.Name}}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email</span>
+                        <span class="info-value">{{user.Email}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Account Settings Card -->
+            <div class="profile-card">
+                <div class="card-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M19.4 15C19.2669 15.3016 19.227 15.6363 19.286 15.9606C19.345 16.2849 19.5003 16.5816 19.73 16.81L19.79 16.87C19.9735 17.0526 20.1151 17.2734 20.2044 17.5166C20.2938 17.7598 20.3286 18.0195 20.3064 18.2777C20.2842 18.5358 20.2056 18.786 20.0763 19.0099C19.9469 19.2338 19.7699 19.4258 19.5586 19.5716C19.3473 19.7174 19.107 19.8134 18.8556 19.8524C18.6042 19.8914 18.3482 19.8724 18.1056 19.7966L18 19.76C17.6995 19.6625 17.4236 19.4928 17.196 19.2652C16.9684 19.0376 16.7987 18.7617 16.7012 18.4612C16.6037 18.1607 16.5815 17.8445 16.6364 17.5363C16.6913 17.2281 16.8217 16.9373 17.0162 16.69L17.15 16.52C17.3787 16.2903 17.5112 15.9813 17.52 15.6569C17.5288 15.3325 17.4133 15.0174 17.1975 14.7754C16.9817 14.5334 16.6819 14.3834 16.3626 14.3569C16.0433 14.3303 15.7284 14.429 15.48 14.63L15.41 14.69" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4.60002 15C4.73311 15.3016 4.77304 15.6363 4.71402 15.9606C4.655 16.2849 4.49974 16.5816 4.27002 16.81L4.21002 16.87C4.02653 17.0526 3.88492 17.2734 3.79558 17.5166C3.70623 17.7598 3.67142 18.0195 3.69362 18.2777C3.71583 18.5358 3.79441 18.786 3.92376 19.0099C4.05311 19.2338 4.23013 19.4258 4.44142 19.5716C4.65271 19.7174 4.893 19.8134 5.14442 19.8524C5.39584 19.8914 5.65181 19.8724 5.89442 19.7966L6.00002 19.76C6.30052 19.6625 6.57642 19.4928 6.80402 19.2652C7.03162 19.0376 7.20132 18.7617 7.29882 18.4612C7.39632 18.1607 7.41852 17.8445 7.36362 17.5363C7.30872 17.2281 7.17832 16.9373 6.98382 16.69L6.85002 16.52C6.6213 16.2903 6.48881 15.9813 6.48002 15.6569C6.47123 15.3325 6.58674 15.0174 6.80252 14.7754C7.0183 14.5334 7.31812 14.3834 7.63742 14.3569C7.95672 14.3303 8.27162 14.429 8.52002 14.63L8.59002 14.69" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <h2>Account Settings</h2>
+                </div>
+                <div class="card-body">
+                    <a href="/change-password" class="settings-button">
+                        <span>Change Password</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Danger Zone -->
+        <div class="danger-zone">
+            <h3>Danger Zone</h3>
+            <button class="delete-account-button" id="deleteAccountBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Delete Account
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+
+    if (deleteAccountBtn) {
+        deleteAccountBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Create a modal for confirmation
+            const modal = document.createElement('div');
+            modal.className = 'confirmation-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>Delete Your Account?</h3>
+                    <p>This will permanently erase all your data. This action cannot be undone.</p>
+                    <div class="modal-actions">
+                        <button class="cancel-btn">Cancel</button>
+                        <button class="confirm-btn">Delete Account</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Handle cancel
+            modal.querySelector('.cancel-btn').addEventListener('click', () => {
+                document.body.removeChild(modal);
+            });
+            
+            // Handle confirmation
+            modal.querySelector('.confirm-btn').addEventListener('click', () => {
+                fetch('/delete-account', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': getCSRFToken(),
+                    },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/';
+                    } else {
+                        alert('Error deleting account. Please try again.');
+                        document.body.removeChild(modal);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while deleting your account.');
+                    document.body.removeChild(modal);
+                });
+            });
+        });
+    }
+});
+
+function getCSRFToken() {
+    const name = "csrftoken=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookieArray = decodedCookie.split(';');
+    
+    for (let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(name) === 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+    return "";
+}
+</script>
+
+<style>
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --danger-color: #f72585;
+    --success-color: #4cc9f0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f7ff;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.navigation {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.back-button:hover {
+    color: var(--primary-color);
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+}
+
+.avatar-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--success-color);
+    border: 2px solid white;
+}
+
+.profile-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.profile-title {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.profile-content {
+    padding: 0 1.5rem 1.5rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.profile-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.profile-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+.card-header svg {
+    color: var(--primary-color);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--gray-color);
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.settings-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: var(--transition);
+}
+
+.settings-button:hover {
+    color: var(--primary-color);
+}
+
+.settings-button svg {
+    color: var(--gray-color);
+}
+
+.danger-zone {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    background-color: #fff5f7;
+    border: 1px solid rgba(247, 37, 133, 0.1);
+}
+
+.danger-zone h3 {
+    color: var(--danger-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.delete-account-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    justify-content: center;
+}
+
+.delete-account-button:hover {
+    background-color: #e5177e;
+    transform: translateY(-2px);
+}
+
+.delete-account-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Confirmation Modal */
+.confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.modal-content p {
+    color: var(--gray-color);
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-actions button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.cancel-btn {
+    background-color: #f1f3f5;
+    color: var(--gray-color);
+}
+
+.cancel-btn:hover {
+    background-color: #e9ecef;
+}
+
+.confirm-btn {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #e5177e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-section {
+        padding: 1rem;
+    }
+    
+    .profile-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .profile-content {
+        padding: 0 1rem 1rem;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .info-label, .info-value {
+        width: 100%;
+    }
+}
+</style>

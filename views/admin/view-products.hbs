@@ -1,0 +1,253 @@
+<section>
+    <div class="container mt-4">
+        <div class="row align-items-center mb-3"> 
+            <div class="col-md-4">
+                <select class="form-control custom-select" id="categoryFilter">
+                    <option value="">Tất Cả Danh Mục</option>
+                    <option value="Mobile">Điện Thoại</option>
+                    <option value="Electronics">TV</option>
+                    <option value="Watches">Đồng Hồ</option>
+                    <option value="computer">Laptop</option>
+                </select>
+            </div>
+            <div class="col-md-8 text-right">
+                <a href="/admin/add-product" class="btn btn-success shadow-sm animated-button">Add Product</a>
+                <a href="/admin/logout" class="btn btn-secondary ml-2 shadow-sm animated-button">Logout</a>
+            </div>
+        </div>
+
+        
+        <table class="table table-hover table-responsive-sm mt-3" id="productsTable"> 
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tiêu Đề</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Danh Mục</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <th scope="row">{{increment @index}}</th>
+                    <td>{{this.Name}}</td>
+                    <td>${{this.Price}}</td>
+                    <td>{{this.Category}}</td>
+                    <td>
+                        <img src="/product-images/{{this._id}}.jpg" alt="Product Image" class="img-thumbnail product-image">
+                    </td>
+                    <td>
+                        <a href="/admin/edit-product/{{this._id}}" class="btn btn-primary btn-sm animated-button">Edit</a>
+                        <a href="/admin/delete-product/{{this._id}}" class="btn btn-danger btn-sm animated-button" onclick="return confirm('Are you sure you want to delete {{this.Name}}?')">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+<style>
+.container {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Select Styling */
+.custom-select {
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 8px 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.custom-select:hover, .custom-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+    outline: none;
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #34d058);
+    border: none;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #6c757d, #868e96);
+    border: none;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover:after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Table Styling */
+.table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.thead-dark {
+    background: linear-gradient(90deg, #2c3e50, #34495e) !important;
+    color: white;
+}
+
+.table-hover tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f7fa;
+    transform: translateX(5px);
+}
+
+.table th, .table td {
+    border: none;
+    padding: 15px;
+}
+
+.table img.product-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    border: 2px solid #f0f0f0;
+}
+
+.table img.product-image:hover {
+    transform: scale(1.2) rotate(5deg);
+    border-color: #28a745;
+}
+
+/* Action Buttons in Table */
+.btn-sm {
+    padding: 5px 15px;
+    margin: 0 5px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #00b4ff);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #dc3545, #ff4560);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .btn {
+        padding: 6px 15px;
+        font-size: 13px;
+    }
+    
+    .table img.product-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .table th, .table td {
+        padding: 10px;
+    }
+}
+</style>
+
+
+
+<script>
+$(document).ready(function () {
+    // Add loading state
+    $('#productsTable').addClass('loading');
+    
+    var table = $('#productsTable').DataTable({
+        "language": {
+            "loadingRecords": "Đang tải dữ liệu..."
+        }
+    });
+    
+    table.on('draw', function() {
+        $('#productsTable').removeClass('loading');
+    });
+
+    $('#categoryFilter').on('change', function () {
+        var category = this.value;
+        table.columns(3).search(category).draw();
+    });
+});
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Initialize DataTable
+        var table = $('#productsTable').DataTable();
+
+        // Category Filter
+        $('#categoryFilter').on('change', function () {
+            var category = this.value;
+            if (category) {
+                table.columns(3).search(category).draw();
+            } else {
+                table.columns(3).search('').draw();
+            }
+        });
+    });
+</script>

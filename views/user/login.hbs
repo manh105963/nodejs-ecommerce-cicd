@@ -1,0 +1,217 @@
+<section>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="text-center mb-5">
+          <img src="/images/htcd.gif" alt="Logo" class="img-fluid logo">
+        </div>
+
+        <div class="card">
+          <h2 class="text-center mb-4">Đăng Nhập</h2>
+          <form action="/login" method="POST">
+            {{#if loginErr}}
+              <p class="alert alert-danger">{{loginErr}}</p>
+            {{/if}}
+            <div class="form-group mb-4">
+              <label>Email Address</label>
+              <input type="email" class="form-control" name="Email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group mb-4">
+              <label>Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" name="Password" id="loginPassword" placeholder="Enter your password" required>
+                <span class="input-group-text toggle-password" onclick="togglePasswordVisibility('loginPassword')">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <a href="/signup" class="link">Create an account</a>
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function togglePasswordVisibility(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    const icon = passwordInput.nextElementSibling.querySelector('i');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+</script>
+
+<style>
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Section Styles */
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Container and Card */
+.container {
+    max-width: 100%;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Typography */
+h2 {
+    color: #2c3e50;
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+label {
+    color: #34495e;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Form Elements */
+.form-control {
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    outline: none;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group-text {
+    border: 1px solid #dfe6e9;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    background: #fff;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-group-text:hover {
+    background: #f1f3f5;
+}
+
+/* Button */
+.btn-primary {
+    background: #667eea;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(90, 103, 216, 0.4);
+}
+
+/* Link */
+.link {
+    color: #667eea;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.link:hover {
+    color: #5a67d8;
+    text-decoration: none;
+}
+
+/* Logo */
+.logo {
+    max-width: 120px;
+    animation: bounceIn 0.8s ease-out forwards;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .btn-primary {
+        padding: 0.65rem 1.5rem;
+    }
+}
+</style>

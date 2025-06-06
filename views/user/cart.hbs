@@ -1,0 +1,109 @@
+<section>
+    <div class="container">
+        {{#if products.length}}
+        <!-- Bảng giỏ hàng nếu có sản phẩm -->
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td><img src="/product-images/{{this.product._id}}.jpg" alt="" style="width: 70px; height:70px"></td>
+                    <td>{{this.product.Name}}</td>
+                    <td>${{this.product.Price}}</td>
+                    <td>
+                        <button class="btn btn-secondary cart-item-count mr-3" onclick="changeQuantity('{{this._id}}', '{{this.product._id}}', -1, {{this.quantity}})">-</button>
+                        {{this.quantity}}
+                        <button class="btn btn-secondary cart-item-count ml-3" onclick="changeQuantity('{{this._id}}', '{{this.product._id}}', 1, {{this.quantity}})">+</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="removeItem('{{this._id}}', '{{this.product._id}}')">Xóa</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <hr>
+        <div class="float-right pr-5">
+            <h3 class="float-right mr-5 mt-4 total-amount">Tổng cộng: ${{total}}</h3>
+            <a href="/place-order" class="btn btn-success mt-3" style="width: 100%;">Đặt hàng</a>
+        </div>
+        {{else}}
+        <!-- Nếu giỏ hàng trống -->
+        <div class="empty-cart-container text-center mt-5">
+            <img src="/images/empty-cart.png" alt="Giỏ hàng trống" style="width: 200px; height: 200px;">
+            <h2 class="mt-4">Giỏ hàng của bạn đang trống!</h2>
+            <p class="lead">Hình như bạn chưa thêm sản phẩm nào vào giỏ hàng.</p>
+            <a href="/" class="btn btn-primary mt-3">Tiếp tục mua sắm</a>
+        </div>
+        {{/if}}
+    </div>
+</section>
+
+<script>
+    function changeQuantity(cartId, proId, count, quantity) {
+        if (quantity === 1 && count === -1) {
+            if (confirm("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng không?")) {
+                removeItem(cartId, proId);
+                return;
+            }
+        }
+
+        $.ajax({
+            url: '/change-product-quantity',
+            data: {
+                cart: cartId,
+                product: proId,
+                count: count
+            },
+            method: 'POST',
+            success: (response) => {
+                if(response.status){
+                    updateTotalAmount();
+                    location.reload();
+                } else {
+                    alert('Có lỗi xảy ra khi cập nhật số lượng');
+                }
+            }
+        });
+    }
+
+    function updateTotalAmount() {
+        $.ajax({
+            url: '/get-total-amount',
+            method: 'GET',
+            success: (response) => {
+                if (response.status) {
+                    $('.total-amount').text(`Tổng cộng: $${response.total}`);
+                } else {
+                    alert('Không thể lấy tổng giá trị đơn hàng');
+                }
+            }
+        });
+    }
+
+    function removeItem(cartId, proId) {
+        $.ajax({
+            url: '/remove-cart-item',
+            data: {
+                cart: cartId,
+                product: proId
+            },
+            method: 'POST',
+            success: (response) => {
+                if(response.status){
+                    location.reload();
+                } else {
+                    alert('Không thể xóa sản phẩm');
+                }
+            }
+        });
+    }
+</script>

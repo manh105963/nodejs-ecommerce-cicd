@@ -1,0 +1,177 @@
+<section>
+    <div class="container">
+        {{#if orders.length}}
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Ngày đặt</th>
+                        <th>Địa chỉ</th>
+                        <th>Mã bưu điện</th>
+                        <th>Số điện thoại</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orders}}
+                    <tr class="{{#if @last}}highlight{{/if}}">
+                        <td data-label="Ngày đặt">{{this.date}}</td>
+                        <td data-label="Địa chỉ">{{this.deliveryDetails.address}}</td>
+                        <td data-label="Mã bưu điện">{{this.deliveryDetails.pincode}}</td>
+                        <td data-label="Số điện thoại">{{this.deliveryDetails.mobile}}</td>
+                        <td data-label="Tổng tiền">{{this.totalAmount}}</td>
+                        <td data-label="Thanh toán">{{this.paymentMethod}}</td>
+                        <td data-label="Trạng thái">{{this.status}}</td>
+                        <td data-label="Thao tác">
+                            <a href="/view-order-products/{{this._id}}" class="btn btn-primary">Xem sản phẩm</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <div class="no-orders mt-5">
+                <h2>Không có đơn hàng</h2>
+                <p>Có vẻ như bạn chưa đặt hàng lần nào. Hãy mua sắm ngay!</p>
+                <a href="/" class="btn btn-primary">Xem sản phẩm</a>
+            </div>
+        {{/if}}
+    </div>
+</section>
+
+<style>
+    /* Thiết lập container */
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 1200px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Thiết lập bảng */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        transition: background-color 0.3s ease;
+    }
+
+    .table thead {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .table thead th {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table td a {
+        color: #fff;
+        background-color: #007bff;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .table td a:hover {
+        background-color: #0056b3;
+    }
+
+    .table td {
+        color: #333;
+    }
+
+    /* Tô màu hàng cuối cùng */
+    .highlight {
+        background-color: #d4edda; /* Màu xanh nhạt */
+        font-weight: bold;
+    }
+
+    /* Responsive cho di động */
+    @media screen and (max-width: 768px) {
+        .table, .table thead, .table tbody, .table th, .table td, .table tr {
+            display: block;
+        }
+
+        .table thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        .table tr {
+            margin: 0 0 1rem 0;
+        }
+
+        .table td {
+            padding: 10px;
+            position: relative;
+            padding-left: 50%;
+            text-align: right;
+        }
+
+        .table td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .table td a {
+            display: inline-block;
+            margin-top: 5px;
+        }
+    }
+
+    /* Thiết lập phần không có đơn hàng */
+    .no-orders {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .no-orders h2 {
+        font-size: 24px;
+        color: #388E3C;
+    }
+
+    .no-orders p {
+        font-size: 16px;
+        color: #555;
+    }
+
+    .no-orders a {
+        margin-top: 20px;
+    }
+</style>
