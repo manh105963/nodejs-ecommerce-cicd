@@ -21,7 +21,6 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./codewebnodejs
 
     - name: Run tests
       run: |
@@ -30,4 +29,3 @@ jobs:
         else
           echo "⚠️ Không có script test"
         fi
-      working-directory: ./codewebnodejs
